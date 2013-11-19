@@ -1,0 +1,30 @@
+<div class="sidebar_panel">
+
+
+
+ <?php foreach ($this->kits as $kit): ?>
+    <a class="hot_link" href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'order' , 'id' => $kit['id'])); ?>"  <?php echo '>'; ?>
+    <div class="kit_item">
+         <div class="kit_pic"></div>
+         <div class="kit">
+        <h2> <?php echo $kit['title']; ?> </h2>
+<div class="kit_info"><p>Počet válců: <?php echo $kit['cylinders'];?> </p></div>
+    </div>
+   </div>
+
+
+    <div class="cleaner"></div>
+        </a>
+    <?php endforeach; ?>
+   <a class="hot_link"
+href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'kits')); ?>"  <?php echo '>'; ?>
+       <div class="kit_item">
+         <div class="kit_pic_complet"></div>
+         <div class="kit">
+        <h2> Kompletní nabídka </h2>
+<div class="kit_info"><p>Zobrazit kompletní nabídku</p></div>
+    </div>
+   </div>
+    </a>
+</div>
+

@@ -1,0 +1,22 @@
+# -FrontPage-
+
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+AuthName casesoft.eu
+AuthUserFile /home/admaster/public_html/_vti_pvt/service.pwd
+AuthGroupFile /home/admaster/public_html/_vti_pvt/service.grp
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+
+
+</IfModule>

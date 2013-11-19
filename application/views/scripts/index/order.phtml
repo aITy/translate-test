@@ -1,0 +1,44 @@
+<?php $this->title = "Objednávka";
+$this->headTitle($this->title); ?>
+
+<h3 style="text-align: left;">Stačí vyplnit technické údaje Vašeho vozu (zjistíte z technického průkazu), abychom byli schopni určit typ
+    konektoru, vyplnit fakturační případně i dodací adresu a stisknout tlačítko "objednat zboží".</h3>
+
+<div class="offer_kit_item_order">
+<div class="offer_kit_order">
+
+        <div class="offer_kit_info_order">
+        <h2> <?php echo $this->kit['title'];
+echo ' - ' . $this->kit['cylinders'] . ' válec' ?> </h2>
+            <h3>Technická specifikace:</h3>
+            <p>
+                Počet válců: <?php echo $this->kit['cylinders']; ?> <br />
+                Provozní teplota: -30 až +50 C° <br />
+                <?php printf('Váha: %01.2f Kg', $this->kit['weight']); ?> <br />
+                <?php printf('Záruka %01.2d měsíců', $this->kit['guarantee']); ?>
+            </p>
+</div>
+        <div class="offer_kit_pic_order">    </div>
+        <div class="cleaner"></div>
+        <br><br />
+
+    </div>
+    <div class="cost">
+
+        <?php if($this->kit['save']>0){
+      echo'<p style="color: black; font-size: 1.1em;">Nyní AKČNÍ NABÍDKA ';  echo $this->kit['save'] . '%'; echo ' sleva, původní cena '; printf('%01.0f Kč', $this->kit['cost']); echo '</b><br/>';
+      echo 'Cena: <b style="color: #D76F37; font-size: 1.6em;">'; printf('%01.0f Kč', $this->kit['cost']-($this->kit['cost']/100*$this->kit['save'])); 
+      echo '</b> </p></div>';
+        }else{
+         echo'<p>Cena: <b style="color: #D76F37; font-size: 1.6em;">'; printf('%01.0f Kč', $this->kit['cost']); echo '</b></p></div>';
+        } ?>
+
+        
+</div>
+<div class="decoration_lane_myth"></div>
+<div class="cleaner"></div>
+
+
+<p> Doprava, diagnostika a montáž je po celé ČR ZDARMA. Objednávka Vám bude potvrzena. <br>Pole označená <b style="color:#F47673;">*</b> jsou povinná.</p>
+
+<?php echo $this->orderform; ?>

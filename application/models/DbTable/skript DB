@@ -1,0 +1,11 @@
+create table kits (
+id int(11) unique not null auto_increment,
+title varchar(100) not null,
+cylinders int(10) not null,
+weight float(10) not null,
+guarantee int(10) not null,
+cost double(255,00) not null,
+save int(10) not null,
+note varchar(255) not null,
+PRIMARY KEY (id)
+);

@@ -1,0 +1,151 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('GoodCAR');
+echo $this->doctype();
+?>
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]> <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]> <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]--> 
+    <head>
+
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+        <?php echo $this->headLink(); ?>
+
+        <?php
+        echo $this->headScript();
+
+        //Pripojeni jQuery skriptu
+        $this->jQuery()->addStylesheet($this->baseUrl('/css/jquery-1.8.0.css'))
+                ->setLocalPath($this->baseUrl('/js/jquery-1.8.0.js'))
+                ->addJavascriptFile($this->baseUrl('js/jquery.color-RGBa-patch.js'));
+//               ->setUiLocalPath($this->baseUrl('/js/jquery/jquery-ui-1.8.2.custom.min.js'))
+//                ->setVersion('1.7.1')
+//                ->setUiVersion('1.8.11')
+//               ->addStylesheet('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css')//add the css
+//                ->enable()
+//                ->uiEnable();
+        ?>
+
+        <?php
+        echo $this->jQuery() . PHP_EOL;
+        ?>
+        <!--[if lt IE 9]>
+        <?php $this->jQuery()->addJavascriptFile($this->baseUrl('http://html5shiv.googlecode.com/svn/trunk/html5.js')); ?>
+        <![endif]-->
+
+    </head>
+    <body>
+        <div id="header">
+            <div class="header_content">
+                <div class="top_title"><h3>Profesionální a kvalitní výbava pro Váš automobil</h3></div>
+                <div class="middle_content"></div>
+                <div id="langs_wrapper">
+                        <?php
+                        $lang = Zend_Registry::get('lang');
+
+                         switch ($lang) {
+
+                            case 'cs' :
+                                echo ' <a href=" ' . $this->url(array('lang' => 'de'),'default') . ' "><ins> <div id="lang_ge">DE</div></ins></a>';
+                                echo ' <a href=" ' . $this->url(array('lang' => 'en'), 'default') . ' "><ins> <div id="lang_en">EN</div></ins></a>';
+                                echo '<a href="' . $this->url(array('lang' => 'cs'),'default') . ' "><ins><div id="lang_cz" class="active">CZ</div></ins></a>';
+
+                                break;
+                            case 'en' :
+                                echo ' <a href=" ' . $this->url(array('lang' => 'de'),'default') . ' "><ins> <div id="lang_ge"></div>DE</ins></a>';
+                                echo ' <a href=" ' . $this->url(array('lang' => 'en'),'default') . ' "><ins> <div id="lang_en" class="active">EN</div></ins></a>';
+                                echo '<a href="' . $this->url(array('lang' => 'cs'),'default') . ' "><ins><div id="lang_cz">CZ</div></ins></a>';
+
+                                break;
+                            case 'de' :
+                                echo ' <a href=" ' . $this->url(array('lang' => 'de'),'default') . ' "><ins> <div id="lang_ge" class="active">DE</div></ins></a>';
+                                echo ' <a href=" ' . $this->url(array('lang' => 'en'),'default') . ' "><ins> <div id="lang_en">EN</div></ins></a>';
+                                echo '<a href="' . $this->url(array('lang' => 'cs'),'default') . ' "><ins><div id="lang_cz">CZ</div></ins></a>';
+
+                                break;
+                        }
+                        ?>       </div>
+                <div class="header_info"><h2>Zvyšte výkon a jezděte levněji, na bioethanol E85</h2></div>
+            </div>
+
+        </div>
+        <div id="menu">
+
+            <?php echo $this->navigation()->menu(); ?>
+
+        </div>
+        <div id="container">
+            <div id="content">
+                <div class="sidebar">
+                    <div class="sidebar_item">
+                        <div class="sidebar_header"> <h2>Řídící jednotky E85</h2></div>
+                        <div class="sidebar_content">
+                            <?php echo $this->layout()->sidebar ?>
+                        </div>
+                        <div class="sidebar_footer"></div>
+                    </div>
+                    <br />
+                    <div class="sidebar_item">
+                        <div class="sidebar_header_02"> <h2>Informace o E85</h2></div>
+                        <div class="sidebar_content">
+                            <ul>
+                                <li> <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'about')); ?>"  <?php echo '>'; ?>Nejčastější dotazy k E85</a></li>
+                                <li> <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'myth')); ?>"  <?php echo '>'; ?>Mýty o biopalivech</a></li>
+                                <li> <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'kits')); ?>"  <?php echo '>'; ?>Technická specifikace jednotek</a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar_footer"></div>
+                    </div>
+                </div>
+                <div class="left_content">
+                    <h1><?php
+                            $title = $this->headTitle();
+                            $part = $title[0];
+                            echo strip_tags($part); ?></h1>
+                    <?php echo $this->layout()->content; ?>
+                        </div>
+                <div class="cleaner"></div>
+                    </div>
+             <div class="cleaner"></div>
+                </div>
+
+
+
+                <div id="footer">
+
+                    <div class="footer_content">
+                        <div class="footer_info"><h2>UŠTEŘETE PŘI KAŽDÉM TANKOVÁNÍ</h2><h3>Zvyšte výkon při snížení spotřeby, poradíme Vám jak</h3></div>
+
+                        <div class="footer_panel">
+                            <div class="footer_menu">
+                                <h2>Menu</h2>
+                                <div class="footer_decoration_lane"></div>
+                                <ul>
+                                    <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index')); ?>"  <?php echo '>'; ?> <li>Úvod</li></a>
+                                    <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'about')); ?>"  <?php echo '>'; ?><li>Vše o ethanolu</li></a>
+                                    <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'services')); ?>"  <?php echo '>'; ?><li>Nabídka služeb</li></a>
+                                    <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'myth')); ?>"  <?php echo '>'; ?><li>Mýty o ethanolu</li></a>
+                                    <a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'contact')); ?>"  <?php echo '>'; ?><li>Kontakt</li></a>
+                                </ul>
+                            </div>
+
+                            <div class="footer_form">
+                                <h2>Zeptejte se nás</h2>
+                                <div class="footer_decoration_lane_02"></div>
+                                <div class="contact_form"><?php echo $this->contactform; ?></div>
+                    </div>
+                </div>
+
+                <div class="footer_copy">GOODCAR &copy; 2012 Všechna práva vyhrazena | Přestavy vozidel na bioethanol E85 | Designed by <a href="http://www.jjstudio.cz">JJ-Studio</a></div>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

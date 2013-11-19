@@ -1,0 +1,29 @@
+<?php $this->title = "Řídící jednotky pro E85";
+$this->headTitle($this->title); ?>
+
+
+<p>Zde naleznete přehled všech námi nabízeneých konverzních kitů na palivo E85.</p>
+
+ <?php foreach ($this->kits as $kit): ?>
+    <div class="offer_kit_item">
+    
+         <div class="offer_kit">
+       
+<div class="offer_kit_info">
+     <h2> <?php echo $kit['title']; echo ' - ' . $kit['cylinders'] . ' válec'?> </h2>
+    <h3>Technická specifikace:</h3>
+    <p>
+    Počet válců: <?php echo $kit['cylinders'];?> <br />
+    Provozní teplota: -30 až +50 C° <br />
+    <?php printf('Váha: %01.2f Kg', $kit['weight']); ?> <br />
+    <?php printf('Záruka %01.2d měsíců', $kit['guarantee']);?>
+    </p>
+    <a style="text-decoration: none;" href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'order' , 'id' => $kit['id'])); ?>"  <?php echo '>'; ?><div class="buy_button">Objednat</div></a>
+</div>
+        <div class="offer_kit_pic">    </div>
+
+    </div>
+   </div>
+<div class="decoration_lane_myth"></div>
+    <div class="cleaner"></div>
+    <?php endforeach; ?>
